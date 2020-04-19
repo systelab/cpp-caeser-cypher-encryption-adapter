@@ -15,7 +15,7 @@ namespace systelab { namespace encryption { namespace caeser_cypher { namespace 
 		};
 		
 		std::vector<EncryptionAdapterTestData> testData = {
-			{ "Key", "StringToEncrypt", "TBD" }
+			{ "Key", "StringToEncrypt", "VwulqjWrHqfu|sw" }
 		};
 	}
 
