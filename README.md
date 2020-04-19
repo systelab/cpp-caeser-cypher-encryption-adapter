@@ -5,7 +5,7 @@
 [![Download](https://api.bintray.com/packages/systelab/conan/CaeserCypherEncryptionAdapter:systelab/images/download.svg)](https://bintray.com/systelab/conan/CaeserCypherEncryptionAdapter:systelab/_latestVersion)
 
 
-# C++ Encryption Adapter implementation based on Caeser Cypher algorithm
+# C++ Encryption Adapter implementation for Caeser Cypher
 
 This repository implements the interface for the [C++ Encryption Adapter](https://github.com/systelab/cpp-encryption-adapter) using the [Caeser Cypher](https://en.wikipedia.org/wiki/Caesar_cipher) algorithm.
 This implementation has been created just for demonstration purposes of the use of the encryption interface, so do not use it on production environments.
@@ -80,7 +80,8 @@ Initialize this encryption adapter by creating an instance of the `systelab::enc
 ```cpp
 #include "CaeserCypherEncryptionAdapter/EncryptionAdapter.h"
 
-std::unique_ptr<systelab::json::IJSONAdapter> encryptionAdapter = std::make<systelab::encryption::caeser_cypher::EncryptionAdapter>();
+std::unique_ptr<systelab::json::IJSONAdapter> encryptionAdapter =
+    std::make<systelab::encryption::caeser_cypher::EncryptionAdapter>();
 ```
 
 Use the `systelab::encryption::IEncryptionAdapter` interface of the created object to access to the JSON features as described on [C++ Encryption Adapter](https://github.com/systelab/cpp-encryption-adapter) documentation.
