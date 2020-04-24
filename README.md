@@ -85,4 +85,4 @@ std::unique_ptr<systelab::json::IJSONAdapter> encryptionAdapter =
     std::make<systelab::encryption::caeser_cypher::EncryptionAdapter>();
 ```
 
-Use the `systelab::encryption::IEncryptionAdapter` interface of the created object to access to the JSON features as described on [C++ Encryption Adapter](https://github.com/systelab/cpp-encryption-adapter) documentation.
+Use the `systelab::encryption::IEncryptionAdapter` interface of the created object to access to the encryption features as described on [C++ Encryption Adapter](https://github.com/systelab/cpp-encryption-adapter) documentation.
