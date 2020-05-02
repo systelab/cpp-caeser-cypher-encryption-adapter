@@ -10,8 +10,8 @@ namespace systelab { namespace encryption { namespace caeser_cypher {
 	{
 		std::string output;
 		
-		unsigned int keyLength = key.size();
-		unsigned int inputLength = input.size();
+		unsigned int keyLength = (unsigned int) key.size();
+		unsigned int inputLength = (unsigned int) input.size();
 		for (unsigned int i = 0; i < inputLength; i++)
 		{
 			output += input[i] + keyLength;
@@ -24,8 +24,8 @@ namespace systelab { namespace encryption { namespace caeser_cypher {
 	{
 		std::string output;
 		
-		unsigned int keyLength = key.size();
-		unsigned int inputLength = input.size();
+		unsigned int keyLength = (unsigned int) key.size();
+		unsigned int inputLength = (unsigned int) input.size();
 		for (unsigned int i = 0; i < inputLength; i++)
 		{
 			output += input[i] - keyLength;
