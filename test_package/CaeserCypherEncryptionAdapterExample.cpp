@@ -1,6 +1,7 @@
 #include "CaeserCypherEncryptionAdapter/EncryptionAdapter.h"
 
 #include <iostream>
+#include <memory>
 
 
 int main(int argc, char *argv[])
