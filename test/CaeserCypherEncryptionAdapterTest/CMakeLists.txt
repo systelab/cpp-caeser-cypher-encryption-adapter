@@ -4,14 +4,21 @@ enable_testing()
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
 # Find external dependencies
-find_package(gtest)
+set(GTEST_PACKAGE_NAME gtest)
+find_package(${GTEST_PACKAGE_NAME})
+if (NOT TARGET ${GTEST_PACKAGE_NAME}::${GTEST_PACKAGE_NAME})
+    set(GTEST_PACKAGE_NAME GTest)
+    find_package(${GTEST_PACKAGE_NAME})
+endif()
 
 # Configure test project
 set(CAESER_CYPHER_ENCRYPTION_ADAPTER_TEST_PROJECT CaeserCypherEncryptionAdapterTest)
 file(GLOB_RECURSE CAESER_CYPHER_ENCRYPTION_ADAPTER_TEST_PROJECT_SRC "*.cpp")
 file(GLOB_RECURSE CAESER_CYPHER_ENCRYPTION_ADAPTER_TEST_PROJECT_HDR "*.h")
 add_executable(${CAESER_CYPHER_ENCRYPTION_ADAPTER_TEST_PROJECT} ${CAESER_CYPHER_ENCRYPTION_ADAPTER_TEST_PROJECT_SRC} ${CAESER_CYPHER_ENCRYPTION_ADAPTER_TEST_PROJECT_HDR})
-target_link_libraries(${CAESER_CYPHER_ENCRYPTION_ADAPTER_TEST_PROJECT} CaeserCypherEncryptionAdapter gtest::gtest)
+target_link_libraries(${CAESER_CYPHER_ENCRYPTION_ADAPTER_TEST_PROJECT}
+					  CaeserCypherEncryptionAdapter
+					  ${GTEST_PACKAGE_NAME}::${GTEST_PACKAGE_NAME})
 
 # Ignored missing PDBs link warning on Visual Studio
 if (CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
