@@ -81,7 +81,7 @@ Initialize this encryption adapter by creating an instance of the `systelab::enc
 ```cpp
 #include "CaeserCypherEncryptionAdapter/EncryptionAdapter.h"
 
-std::unique_ptr<systelab::json::IJSONAdapter> encryptionAdapter =
+std::unique_ptr<systelab::encryption::IEncryptionAdapter> encryptionAdapter =
     std::make<systelab::encryption::caeser_cypher::EncryptionAdapter>();
 ```
 
