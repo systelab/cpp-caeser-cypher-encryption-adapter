@@ -16,7 +16,7 @@ class CaeserCypherEncryptionAdapterConan(ConanFile):
     exports_sources = "*"
 
     def requirements(self):
-        self.requires("EncryptionAdapterInterface/1.0.2@systelab/stable")
+        self.requires("EncryptionAdapterInterface/1.0.3@systelab/stable")
 
     def build_requirements(self):
         if self.options.gtest == "1.7.0":
