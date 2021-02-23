@@ -14,7 +14,7 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         owner: systelab
-        repo_name: cpp-trace-api
+        repo_name: cpp-caeser-cypher-encryption-adapter
         library_name: 'Caeser Cypher Encryption Adapter CSW library'
         tag_name: ${{ github.event.client_payload.tag }}
         configuration_name: ${{ github.event.client_payload.configuration }}
