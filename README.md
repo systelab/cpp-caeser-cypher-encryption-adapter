@@ -1,8 +1,7 @@
 [![Build Status](https://travis-ci.org/systelab/cpp-caeser-cypher-encryption-adapter.svg?branch=master)](https://travis-ci.org/systelab/cpp-caeser-cypher-encryption-adapter)
 [![Build status](https://ci.appveyor.com/api/projects/status/qdrjivrs26gf46lo?svg=true)](https://ci.appveyor.com/project/systelab/cpp-caeser-cypher-encryption-adapter)
 [![codecov](https://codecov.io/gh/systelab/cpp-caeser-cypher-encryption-adapter/branch/master/graph/badge.svg)](https://codecov.io/gh/systelab/cpp-caeser-cypher-encryption-adapter)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/492f2b284cd149018ec9dd54a45d53df)](https://www.codacy.com/app/systelab/cpp-caeser-cypher-encryption-adapter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=systelab/cpp-caeser-cypher-encryption-adapter&amp;utm_campaign=Badge_Grade)
-[![Download](https://api.bintray.com/packages/systelab/conan/CaeserCypherEncryptionAdapter:systelab/images/download.svg)](https://bintray.com/systelab/conan/CaeserCypherEncryptionAdapter:systelab/_latestVersion)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/170a7a69e61e45ba8924f5cf13d97ea8)](https://www.codacy.com/gh/systelab/cpp-caeser-cypher-encryption-adapter/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=systelab/cpp-caeser-cypher-encryption-adapter&amp;utm_campaign=Badge_Grade)
 
 
 # C++ Encryption Adapter implementation for Caeser Cypher
@@ -28,7 +27,7 @@ def requirements(self):
 As this package is not available on the conan-center, you will also need to configure a remote repository before installing dependencies:
 
 ```bash
-conan remote add systelab-bintray https://api.bintray.com/conan/systelab/conan 
+conan remote add systelab-public https://systelab.jfrog.io/artifactory/api/conan/cpp-conan-production-local
 ```
 
 See Conan [documentation](https://docs.conan.io/en/latest/) for further details on how to integrate this package with your build system.
