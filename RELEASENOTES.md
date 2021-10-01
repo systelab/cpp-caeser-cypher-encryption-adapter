@@ -1,5 +1,16 @@
 # Summary of changes
 
+## Changes for version 1.0.4 (1 Oct 2021)
+
+### Bug Fixes
+
+- Moved continuous integration to Jenkins
+- Deploy conan package into remote specific for C++ task force
+- Fixed use of "export_sources" definition in conan recipe
+- Added configurations for the Newton and Snow projects into continuous integration
+- Moved EncryptionAdapterInterface dependency to version 1.0.5
+
+
 ## Changes for version 1.0.3 (23 Feb 2021)
 
 ### Bug Fixes
