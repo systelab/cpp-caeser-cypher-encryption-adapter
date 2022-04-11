@@ -1,5 +1,12 @@
 # Summary of changes
 
+## Changes for version 1.1.0 (11 Apr 2022)
+
+### Breaking changes
+
+- Moved EncryptionAdapterInterface dependency to version 1.1.0
+
+
 ## Changes for version 1.0.4 (1 Oct 2021)
 
 ### Bug Fixes

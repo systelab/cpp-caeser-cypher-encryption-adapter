@@ -71,12 +71,14 @@ namespace systelab { namespace encryption { namespace caeser_cypher { namespace 
 
 	TEST_P(EncryptionAdapterTest, testEncryptStringReturnsExpectedValue)
 	{
-		ASSERT_EQ(GetParam().encryptedString, m_encryptionAdapter->encryptString(GetParam().key, GetParam().decryptedString));
+		systelab::encryption::SecurityKey securityKey = []() { return GetParam().key; };
+		ASSERT_EQ(GetParam().encryptedString, m_encryptionAdapter->encryptString(securityKey, GetParam().decryptedString));
 	}
 
 	TEST_P(EncryptionAdapterTest, testDecryptStringReturnsExpectedValue)
 	{
-		ASSERT_EQ(GetParam().decryptedString, m_encryptionAdapter->decryptString(GetParam().key, GetParam().encryptedString));
+		systelab::encryption::SecurityKey securityKey = []() { return GetParam().key; };
+		ASSERT_EQ(GetParam().decryptedString, m_encryptionAdapter->decryptString(securityKey, GetParam().encryptedString));
 	}
 
 	INSTANTIATE_TEST_CASE_P(Test, EncryptionAdapterTest, testing::ValuesIn(testData));

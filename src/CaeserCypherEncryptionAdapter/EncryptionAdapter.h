@@ -11,8 +11,8 @@ namespace systelab { namespace encryption { namespace caeser_cypher {
 		EncryptionAdapter();
 		virtual ~EncryptionAdapter();
 
-		std::string encryptString(const std::string& key, const std::string& input) const override;
-		std::string decryptString(const std::string& key, const std::string& input) const override;
+		std::string encryptString(const SecurityKey& key, const std::string& input) const override;
+		std::string decryptString(const SecurityKey& key, const std::string& input) const override;
 	};
 
 }}}
