@@ -120,7 +120,7 @@ pipeline
 			{
 				script
 				{
-					bat "conan upload CaeserCypherEncryptionAdapter/${version}@systelab/${channel} --all -r systelab-conan-local --force"
+					bat script:"conan upload CaeserCypherEncryptionAdapter/${version}@systelab/${channel} --all -r systelab-conan-local --force", label: 'Uploading CaeserCypherEncryptionAdapter package to Artifactory'
 				}
 			}
 		}
