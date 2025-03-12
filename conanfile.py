@@ -11,22 +11,13 @@ class CaeserCypherEncryptionAdapterConan(ConanFile):
     license = "MIT"
     generators = "cmake_find_package"
     settings = "os", "compiler", "build_type", "arch"
-    options = {"gtest": ["1.7.0", "1.8.1", "1.10.0"]}
-    default_options = "gtest=1.10.0"
     exports_sources = "*", "!build-*", "!*.yml", "!*.md", "!*.in", "!ci", "!.gitattributes", "!.gitignore", "!LICENSE"
 
     def requirements(self):
-        self.requires("EncryptionAdapterInterface/1.1.0@systelab/stable")
+        self.requires("EncryptionAdapterInterface/1.2.0@systelab/stable")
 
     def build_requirements(self):
-        if self.options.gtest == "1.7.0":
-            self.build_requires("gtest/1.7.0@systelab/stable")
-        elif self.options.gtest == "1.8.1":
-            self.build_requires("gtest/1.8.1")
-        elif self.options.gtest == "1.10.0":
-            self.build_requires("gtest/1.10.0#0c895f60b461f8fee0da53a84d659131")
-        else:
-            self.build_requires(f"gtest/{self.options.gtest}")
+        self.build_requires("gtest/1.14.0#4372c5aed2b4018ed9f9da3e218d18b3")
 
     def build(self):
         cmake = CMake(self)
