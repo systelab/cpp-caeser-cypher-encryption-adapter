@@ -80,7 +80,7 @@ pipeline
 								def buildFolder = "build/${config}-${arch}"
 								bat "conan install . --install-folder ${buildFolder} --profile=${profile} -s arch=${arch} -s build_type=${config}"
 								bat "conan build . --build-folder ${buildFolder}"
-								bat "conan export-pkg . CaeserCypherEncryptionAdapter/${version}@systelab/${channel} --build-folder ${buildFolder} --force"
+								bat "conan export-pkg . CaeserCypherEncryptionAdapter/${version}@systelab/${channel} --profile=${profile} -s arch=${arch} -s build_type=${config} --build-folder ${buildFolder} --force"
 								dir ("${buildFolder}/bin/${config}/")
 								{
 									bat "CaeserCypherEncryptionAdapterTest.exe --gtest_output=xml:CaeserCypherEncryptionAdapterTest.xml"
