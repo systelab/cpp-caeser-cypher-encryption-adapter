@@ -1,5 +1,12 @@
 # Summary of changes
 
+## Changes for version 1.2.0 (12 Mar 2025)
+
+### Breaking changes
+
+- Moved EncryptionAdapterInterface dependency to version 1.2.0
+- Updated to c++20
+
 ## Changes for version 1.1.0 (11 Apr 2022)
 
 ### Breaking changes
