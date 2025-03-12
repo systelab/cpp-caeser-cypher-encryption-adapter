@@ -79,7 +79,8 @@ pipeline
 							{
 								def buildFolder = "build/${config}-${arch}"
 								bat "conan install . --install-folder ${buildFolder} --profile=${profile} -s arch=${arch} -s build_type=${config}"
-								bat "conan build . --build-folder ${buildFolder}"
+								bat "cmake .. -G \"Visual Studio 17 2022\" -A x64"
+								bat "cmake --build ${buildFolder} --config ${config}"
 								bat "conan export-pkg . CaeserCypherEncryptionAdapter/${version}@systelab/${channel} --profile=${profile} -s arch=${arch} -s build_type=${config} --build-folder ${buildFolder} --force"
 								dir ("${buildFolder}/bin/${config}/")
 								{
