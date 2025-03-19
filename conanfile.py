@@ -11,8 +11,7 @@ class CaeserCypherEncryptionAdapterConan(ConanFile):
     license = "MIT"
     generators = "cmake_find_package"
     settings = "os", "compiler", "build_type", "arch"
-    exports_sources = "*", "!build-*", "!*.yml", "!*.md", "!*.in", "!ci", "!.gitattributes", "!.gitignore", "!LICENSE"
-
+    
     def requirements(self):
         self.requires("EncryptionAdapterInterface/1.2.0@systelab/stable")
 
