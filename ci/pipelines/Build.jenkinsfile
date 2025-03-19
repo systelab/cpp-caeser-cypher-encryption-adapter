@@ -103,7 +103,6 @@ pipeline
 					{ arch ->
 						configs.each
 						{ config ->
-							def buildFolder = "build/${config}-${arch}"
 							bat "conan test test_package/conanfile.py ${packageNameInterface}/${version}@systelab/${channel} --profile=${profile} -s arch=${arch} -s build_type=${config}"
 						}
 					}
