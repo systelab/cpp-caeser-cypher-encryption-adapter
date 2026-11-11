@@ -19,7 +19,7 @@ This library is designed to be installed by making use of [Conan](https://conan.
 
 ```python
 def requirements(self):
-   self.requires("CaeserCypherEncryptionAdapter/1.0.0@systelab/stable")
+   self.requires("caeser-cypher-encryption-adapter/1.2.1")
 ```
 
 > Version number of this code snipped is set just as an example. Replace it for the desired package version to retrieve.

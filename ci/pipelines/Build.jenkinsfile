@@ -1,17 +1,11 @@
-def channel = "testing"
 def version = "0.0.0"
-def packageNameInterface = "CaeserCypherEncryptionAdapter"
+def packageNameInterface = "caeser-cypher-encryption-adapter"
 def profile = "vs2022.conanprofile"
 def archs = ['x86', 'x86_64']
 def configs = ['Debug', 'Release']
 
 
-library identifier: "jenkins-pipeline-utils@1.0.10",
- 		retriever: modernSCM([
- 			$class: "GitSCMSource",
- 			remote: "https://bitbucket.org/Systelab/jenkins-pipeline-utils.git",
- 			credentialsId: "BitbucketWerfen"
- 		])
+@Library('aid-pipeline-utils@1.0.23') _
    
 pipeline
 {
@@ -20,16 +14,17 @@ pipeline
 		label 'lib-build'
 	}
 
+	environment
+	{
+		PATH = "${env.USERPROFILE}\\.venvs\\conan2\\Scripts;${env.PATH}"
+	}
+
 	parameters
 	{
 		string(	name: 'tag',
  				description: 'Version to build (must match the version of the tag that will be checked out), leave blank for checkout of current branch',
  				defaultValue: '',
  				trim: true)
- 
- 		booleanParam( name: 'stable',
- 					  description: 'Show if generated library should be uploaded as stable or testing',
- 					  defaultValue: false )
  		
  		booleanParam( name: 'uploadPackage',
  					  description: 'Whether or not to upload conan package',
@@ -61,7 +56,7 @@ pipeline
  						version = params.tag
  						checkoutFromGIT(scm.userRemoteConfigs[0].url, "v${version}", true)
  					}
- 					channel = params.stable ? "stable" : "testing"
+
  				}
 			}
 		}
@@ -79,10 +74,10 @@ pipeline
 							stage("Build ${config}|${arch}")
 							{
 								def buildFolder = "build/${config}-${arch}"
-								bat script: "conan install . --install-folder ${buildFolder} --profile=${profile} -s arch=${arch} -s build_type=${config}", label: 'Installing dependencies'
-								bat script: "conan build . --build-folder ${buildFolder}", label: 'Building'					
-								bat script: "conan export-pkg . ${packageNameInterface}/${version}@systelab/${channel} --build-folder ${buildFolder} --force", label: "Exporting package ${packageNameInterface}/${version}@systelab/${channel}"
-								dir("${buildFolder}/bin/${config}/")
+								bat script: "conan install . --output-folder ${buildFolder} --profile:all=${profile} -s:a arch=${arch} -s:a build_type=${config}", label: 'Installing dependencies'
+								bat script: "conan build . --output-folder ${buildFolder} --profile:all=${profile} -s:a arch=${arch} -s:a build_type=${config}", label: 'Building'					
+								bat script: "conan export-pkg . --name ${packageNameInterface} --version ${version} --output-folder ${buildFolder} --profile:all=${profile} -s:a arch=${arch} -s:a build_type=${config}", label: "Exporting package ${packageNameInterface}/${version}"
+								dir("${buildFolder}/build/bin/${config}/")
 								{
 									bat "CaeserCypherEncryptionAdapterTest.exe --gtest_output=xml:CaeserCypherEncryptionAdapterTest.xml"
 								}
@@ -103,7 +98,7 @@ pipeline
 					{ arch ->
 						configs.each
 						{ config ->
-							bat "conan test test_package/conanfile.py ${packageNameInterface}/${version}@systelab/${channel} --profile=${profile} -s arch=${arch} -s build_type=${config}"
+							bat "conan test test_package/conanfile.py ${packageNameInterface}/${version} --profile:all=${profile} -s:a arch=${arch} -s:a build_type=${config}"
 						}
 					}
 				}
@@ -120,7 +115,7 @@ pipeline
 			{
 				script
 				{
-					bat script:"conan upload ${packageNameInterface}/${version}@systelab/${channel} --all -r systelab-conan-local --force", label: 'Uploading CaeserCypherEncryptionAdapter package to Artifactory'
+					bat script:"conan upload ${packageNameInterface}/${version} -r aid-conan-production-local --confirm", label: 'Uploading caeser-cypher-encryption-adapter package to Artifactory'
 				}
 			}
 		}
@@ -133,7 +128,7 @@ pipeline
 			junit allowEmptyResults: true, testResults: "build*/CaeserCypherEncryptionAdapterTest.xml"
 			script
  			{
- 				currentBuild.description = "${version}/${channel}"
+ 				currentBuild.description = version
  			}
  			cleanupWorkspace()
 		}
